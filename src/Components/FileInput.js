@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactFileReader from 'react-file-reader';
-
+import './styles.css';
 
 class FileInput extends Component {
   state = {
@@ -11,19 +11,20 @@ class FileInput extends Component {
     var reader = new FileReader();
     reader.onload = function(e) {
     //Use reader.result
-    alert(reader.result)
+    alert("Se ha cargado con exito!!")//reader.result)
     }
   reader.readAsText(files[0]);
 }
 
   render() {
     return (
-        <div className="App">
+        <div className="lenguaje">
          
-          <p> View Console for output of file selectionn. Use base64 conversion to instantly display selected images. </p>
+          <p> Seleccione el archivo XML que desea cargar </p>
           <ReactFileReader handleFiles={this.handleFiles} fileTypes={'.xml'}>
-            <button className='btn'>Upload</button>
+            <button className='btn'>Cargar archivo</button>
           </ReactFileReader>
+          
         </div>
       );
   }

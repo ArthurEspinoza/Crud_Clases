@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.css';
 
 class RadioButtons extends React.Component {
     constructor() {
@@ -17,19 +18,19 @@ class RadioButtons extends React.Component {
     
     render() {
       return (
-        <div>
-          
+        <div className="lenguaje">
+          <p> Seleccione el lenguaje de programación que desee </p>
           <input type="radio"
-                 value="Yes"
-                 checked={this.state.selectedOption === "Yes"}
-                 onChange={this.radioChange} />Yes
+                 value="Java"
+                 checked={this.state.selectedOption === "Java"}
+                 onChange={this.radioChange} />Java
   
           <input type="radio"
-                 value="No"
-                 checked={this.state.selectedOption === "No"}
-                 onChange={this.radioChange}/>No
+                 value="C++"
+                 checked={this.state.selectedOption === "C++"}
+                 onChange={this.radioChange}/>C++
           
-          <h3>this.state.selectedOption: {this.state.selectedOption}</h3>
+          <h3>Usted selecciono el lenguaje: {this.state.selectedOption}</h3>
         </div> 
       );
     }
