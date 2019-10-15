@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_7HpqgMs9EemR9Zq8Q2DrwQ" name="auto2">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_7Nw5kMs9EemR9Zq8Q2DrwQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_AqqAEMs-EemR9Zq8Q2DrwQ" name="Auto">
+    <generalization xmi:type="uml:Generalization" xmi:id="_XAAPcOO-EemTk6CKSpsZQA" general="_w_V7wOO9EemTk6CKSpsZQA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_U7rpQMs-EemR9Zq8Q2DrwQ" name="marca" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_na8kcMs_EemR9Zq8Q2DrwQ" name="color" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_01HoYuOaEemTk6CKSpsZQA" name="motor" type="_9lEF8OOYEemTk6CKSpsZQA" aggregation="composite" association="_01HBUOOaEemTk6CKSpsZQA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_01IPcOOaEemTk6CKSpsZQA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_01IPceOaEemTk6CKSpsZQA" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_2Ce-IOPAEemTk6CKSpsZQA" name="radiomp3" type="_qCd-UOO_EemTk6CKSpsZQA" association="_2Cch4OPAEemTk6CKSpsZQA">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2CflMOPAEemTk6CKSpsZQA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2CgMQOPAEemTk6CKSpsZQA" value="1"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_CegRYMtAEemR9Zq8Q2DrwQ" name="encender" concurrency="concurrent">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_1aqFwOOXEemTk6CKSpsZQA" name="msg">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_9lEF8OOYEemTk6CKSpsZQA" name="Motor">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_A9zjYOOZEemTk6CKSpsZQA" name="numCilindros" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Oaej4OOZEemTk6CKSpsZQA"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OZfscOOZEemTk6CKSpsZQA" value="*"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Q9LxMOOZEemTk6CKSpsZQA" name="setNumCilindros">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZFU9AOOZEemTk6CKSpsZQA" name="numC">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_cEkVUOOZEemTk6CKSpsZQA" name="getNumCilindros"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_01HBUOOaEemTk6CKSpsZQA" memberEnd="_01HoYuOaEemTk6CKSpsZQA _01IPcuOaEemTk6CKSpsZQA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_01HoYOOaEemTk6CKSpsZQA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_01HoYeOaEemTk6CKSpsZQA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_01IPcuOaEemTk6CKSpsZQA" name="auto" type="_AqqAEMs-EemR9Zq8Q2DrwQ" association="_01HBUOOaEemTk6CKSpsZQA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_w_V7wOO9EemTk6CKSpsZQA" name="VehiculoTerrestre">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_HN_IMOO-EemTk6CKSpsZQA" name="trasladar"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_qCd-UOO_EemTk6CKSpsZQA" name="RadioMP3">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_FRUVQOPAEemTk6CKSpsZQA" name="marca" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VubA4OPAEemTk6CKSpsZQA" name="precio" visibility="public">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_hl9PkOPAEemTk6CKSpsZQA" name="tocarMusica" concurrency="concurrent"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_2Cch4OPAEemTk6CKSpsZQA" memberEnd="_2Ce-IOPAEemTk6CKSpsZQA _2CgMQePAEemTk6CKSpsZQA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2CeXEOPAEemTk6CKSpsZQA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2CeXEePAEemTk6CKSpsZQA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_2CgMQePAEemTk6CKSpsZQA" name="auto" type="_AqqAEMs-EemR9Zq8Q2DrwQ" association="_2Cch4OPAEemTk6CKSpsZQA"/>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_F6FSUMs-EemR9Zq8Q2DrwQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_F6HHgMs-EemR9Zq8Q2DrwQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>
