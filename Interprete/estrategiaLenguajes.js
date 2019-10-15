@@ -60,10 +60,14 @@ function setMet(arr, arrC) {
             resultado += "public " + arr[i].nombre + "( ";
             var arrP = arr[i].parametros;
             for (var j = 0; j < arrP.length; j++) {
+                var checadorP = j + 1;
                 if (attrTipos.includes(arrP[j].tipo) != false) {
                     resultado += setNewType(arrP[j].tipo) + " " + arrP[j].nombre;
                 } else {
                     resultado += buscarHT(arrC, arrP[j].tipo) + " " + arrP[j].nombre;
+                }
+                if (checadorP < arrP.length) {
+                    resultado += ", ";
                 }
             }
             resultado += " ){...} \n\t";
@@ -71,10 +75,14 @@ function setMet(arr, arrC) {
             resultado += "public " + arr[i].nombre + "( ";
             var arrPC = arr[i].parametros;
             for (var z = 0; z < arrPC.length; z++) {
+                var checadorZ = z + 1;
                 if (attrTipos.includes(arrPC[z].tipo) != false) {
                     resultado += setNewType(arrPC[z].tipo) + " " + arrPC[z].nombre;
                 } else {
                     resultado += buscarHT(arrC, arrPC[z].tipo) + " " + arrPC[z].nombre;
+                }
+                if (checadorZ < arrPC.length) {
+                    resultado += ", ";
                 }
             }
             resultado += " ){...} \n";
@@ -103,7 +111,8 @@ var Cmasmas = function() {
         for (var i = 0; i < arregloClases.length; i++) {
             //Asigna el nombre
             header += "class " + arregloClases[i].nombre + " ";
-            if (arregloClases[i].herencia != "") {
+            //console.log(arregloClases[i].herencia);
+            if (arregloClases[i].herencia != "" && arregloClases[i].herencia != undefined) {
                 header += ": public " + buscarHT(arregloClases, arregloClases[i].herencia);
             }
             header += "{\n\t";
