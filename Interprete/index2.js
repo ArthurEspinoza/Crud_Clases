@@ -54,10 +54,10 @@ function xmlToJson(xml) {
     return obj;
 }
 
-
+var xmlA;
 function aJson() {
     document.getElementById("ajson").disabled=true;
-    var xmlA = parser.parseFromString(xarchivo, 'text/xml');
+    xmlA = parser.parseFromString(xarchivo, 'text/xml');
     var obj = xmlToJson(xmlA);
     console.log(obj);
     console.dir(obj["uml:Model"]["packagedElement"]);
@@ -376,9 +376,17 @@ function verJson() {
     document.getElementById("verJson").disabled=true;
 }
 
+var exportador = new Exportador();
+var opciones = document.getElementById("lengOpc");
 function runA() {
-    var opciones = document.getElementById("lengOpc");
-    var exportador = new Exportador();
+    
+    var save = document.getElementById("guardar");
+    save.style.display = (save.style.display == 'none') ? 'block' : 'none';
+    var text = document.getElementById("fileName");
+    text.style.display = (text.style.display == 'none') ? 'block' : 'none';
+    
+    //var opciones = document.getElementById("lengOpc");
+    //var exportador = new Exportador();
     var lenguaje;
     switch (opciones.options[opciones.selectedIndex].text) {
         case "C++":
@@ -394,7 +402,7 @@ function runA() {
     exportador.setLenguaje(lenguaje);
     console.log(exportador.getName());
     console.log(exportador.exportar(arrClases))
-    document.getElementById("resultado").innerHTML = exportador.getName() + "\n" + exportador.exportar(arrClases);
+    document.getElementById("resultado").innerHTML = "//" + exportador.getName() + "\n" + exportador.exportar(arrClases);
     document.getElementById("archivo").value = "";
     
 }
@@ -403,5 +411,42 @@ function guardar(){
     document.getElementById("ajson").disabled=false;
     document.getElementById("getElement").disabled=false;
     document.getElementById("verJson").disabled=false;
+    
+    var textToWrite = "//" + exportador.getName() + "\n" + exportador.exportar(arrClases); //document.getElementById("resultado").value;
+    var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+    switch (opciones.options[opciones.selectedIndex].text) {
+        case "C++":
+            var fileNameToSaveAs = document.getElementById("fileName").value + ".cpp";
+            break;
+        case "JAVA":
+            var fileNameToSaveAs = document.getElementById("fileName").value + ".java";
+            break;
+        default:
+            alert("Ninguna opción seleccionada");
+            break;
+    }
+    //var fileNameToSaveAs = document.getElementById("guardar").value + ".cpp";
+    //var fileNameToSaveAs = "pruebas.txt";
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    if (window.webkitURL != null)
+    {
+        // Chrome allows the link to be clicked
+        // without actually adding it to the DOM.
+        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+    }
+    else
+    {
+        // Firefox requires the link to be added to the DOM
+        // before it can be clicked.
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+    }
+
+    downloadLink.click();
+    window.webkitURL.revokeObjectURL();
     
 }

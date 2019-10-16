@@ -91,17 +91,24 @@ body {
 
 }
 
+#fileName{
+    border-radius: 12px;
+    text-align: center;
+    font-size: 20px;
+    float: left;
+}
 #guardar{
     border-radius: 12px;
     background-color: #14987f;
     text-align: center;
     font-size: 20px;
+    margin-left: 5px;
+    float: left;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
-
-
-
 }
+
+
 
 #exportar:hover{
     background-color:#367148; /* Green */

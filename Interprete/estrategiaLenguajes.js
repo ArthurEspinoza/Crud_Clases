@@ -188,7 +188,7 @@ Exportador.prototype = {
 };
 var Cmasmas = function() {
     this.exportar = function(arregloClases) {
-        var header = "#include&lt;iostream&gt;\nusing namespace std;\n";
+        var header = "#include<iostream>\nusing namespace std;\n";
         for (var i = 0; i < arregloClases.length; i++) {
             //Asigna el nombre
             header += "class " + arregloClases[i].nombre + " ";
