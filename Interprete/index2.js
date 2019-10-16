@@ -391,4 +391,5 @@ function runA() {
     console.log(exportador.getName());
     console.log(exportador.exportar(arrClases))
     document.getElementById("resultado").innerHTML = exportador.getName() + "\n" + exportador.exportar(arrClases);
+    document.getElementById("archivo").value = "";
 }
