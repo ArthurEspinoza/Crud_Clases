@@ -56,12 +56,14 @@ function xmlToJson(xml) {
 
 
 function aJson() {
+    document.getElementById("ajson").disabled=true;
     var xmlA = parser.parseFromString(xarchivo, 'text/xml');
     var obj = xmlToJson(xmlA);
     console.log(obj);
     console.dir(obj["uml:Model"]["packagedElement"]);
     arrElementos = obj["uml:Model"]["packagedElement"];
     console.log(arrElementos.length);
+    
 }
 
 function getElementosArreglo() {
@@ -366,10 +368,12 @@ function getElementos() {
             metodos = [];
         }
     }
+    document.getElementById("getElement").disabled=true;
 }
 
 function verJson() {
     console.log(arrClases);
+    document.getElementById("verJson").disabled=true;
 }
 
 function runA() {
@@ -392,4 +396,12 @@ function runA() {
     console.log(exportador.exportar(arrClases))
     document.getElementById("resultado").innerHTML = exportador.getName() + "\n" + exportador.exportar(arrClases);
     document.getElementById("archivo").value = "";
+    
+}
+
+function guardar(){
+    document.getElementById("ajson").disabled=false;
+    document.getElementById("getElement").disabled=false;
+    document.getElementById("verJson").disabled=false;
+    
 }

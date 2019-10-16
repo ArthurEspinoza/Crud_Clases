@@ -1,0 +1,114 @@
+body {
+    background-color: #9CD5B7;
+}
+
+#cargarArchivo{
+    float:left;
+    border-radius: 25px;
+    border: 5px solid #559963;
+    padding: 20px;
+    width: 30%;
+    height: 100%;
+}
+
+#visualizar{
+    float:left;
+    border-radius: 25px;
+    border: 5px solid #559963;
+    margin-left: 20px;
+    padding: 20px;
+    width: 60%;
+    height: 100%;
+
+}
+#archivo{
+    border: 2px solid #55AF68;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 40px 20px;
+    font-size: 1em;
+
+}
+
+#ajson{
+    border-radius: 8px;
+    background-color: #55AF68;
+    text-align: center;
+    font-size: 17px;
+    margin: 2.5px 20px;
+    display: block;
+
+    
+}
+
+#getElement{
+    border-radius: 8px;
+    background-color: #55AF68;
+    text-align: center;
+    font-size: 17px;
+    margin: 2.5px 20px;
+    display: block;
+
+    
+}
+
+#verJson{
+    border-radius: 8px;
+    background-color: #55AF68;
+    text-align: center;
+    font-size: 17px;
+    margin: 2.5px 20px;
+    display: block;
+    
+}
+
+#sel{
+    margin: 20px;
+    font-size: 1.2em;
+
+}
+
+#lengOpc{
+    width: 60%;
+    padding: 5px 20px;
+    margin: 0px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #55AF68;
+    font-size: 0.9em;
+
+}
+
+#exportar{
+    border-radius: 12px;
+    background-color: #14987f;
+    text-align: center;
+    font-size: 20px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin: 50px 20px;
+    display: block;
+
+}
+
+#guardar{
+    border-radius: 12px;
+    background-color: #14987f;
+    text-align: center;
+    font-size: 20px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+
+
+
+}
+
+#exportar:hover{
+    background-color:#367148; /* Green */
+    color: white;
+}
+
+#guardar:hover{
+    background-color: #367148; /* Green */
+    color: white;
+}
