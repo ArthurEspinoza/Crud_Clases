@@ -55,15 +55,16 @@ function xmlToJson(xml) {
 }
 
 var xmlA;
+
 function aJson() {
-    document.getElementById("ajson").disabled=true;
+    document.getElementById("ajson").disabled = true;
     xmlA = parser.parseFromString(xarchivo, 'text/xml');
     var obj = xmlToJson(xmlA);
     console.log(obj);
     console.dir(obj["uml:Model"]["packagedElement"]);
     arrElementos = obj["uml:Model"]["packagedElement"];
     console.log(arrElementos.length);
-    
+
 }
 
 function getElementosArreglo() {
@@ -97,13 +98,13 @@ function getElementosArreglo() {
             }
             if (arrElementos[i]["ownedAttribute"] != undefined) {
                 if (Array.isArray(arrElementos[i]["ownedAttribute"])) {
-                    arrAtributos = arrElementos[i]["ownedAttribute"];
+                    var arrAtributos = arrElementos[i]["ownedAttribute"];
                     //console.log(arrAtributos[0].type);
                     for (let j = 0; j < arrAtributos.length; j++) {
                         let tipo;
                         console.log(j + " Atributo del array: " + arrAtributos[j]["@attributes"].name);
                         if (arrAtributos[j].type != undefined) {
-                            splitTipo = (arrAtributos[j].type["@attributes"].href).split('#');
+                            var splitTipo = (arrAtributos[j].type["@attributes"].href).split('#');
                             console.log(j + " Tipo: " + splitTipo[1]);
                             tipo = splitTipo[1];
                         } else {
@@ -243,13 +244,13 @@ function getElementos() {
             //Atributos de la clase
             if (arrElementos["ownedAttribute"] != undefined) {
                 if (Array.isArray(arrElementos["ownedAttribute"])) {
-                    arrAtributos = arrElementos["ownedAttribute"];
+                    var arrAtributos = arrElementos["ownedAttribute"];
                     //console.log(arrAtributos[0].type);
                     for (let j = 0; j < arrAtributos.length; j++) {
                         let tipo;
                         console.log(j + " Atributo del array: " + arrAtributos["@attributes"].name);
                         if (arrAtributos.type != undefined) {
-                            splitTipo = (arrAtributos.type["@attributes"].href).split('#');
+                            var splitTipo = (arrAtributos.type["@attributes"].href).split('#');
                             console.log(j + " Tipo: " + splitTipo[1]);
                             tipo = splitTipo[1];
                         } else {
@@ -368,23 +369,24 @@ function getElementos() {
             metodos = [];
         }
     }
-    document.getElementById("getElement").disabled=true;
+    document.getElementById("getElement").disabled = true;
 }
 
 function verJson() {
     console.log(arrClases);
-    document.getElementById("verJson").disabled=true;
+    document.getElementById("verJson").disabled = true;
 }
 
 var exportador = new Exportador();
 var opciones = document.getElementById("lengOpc");
+
 function runA() {
-    
+
     var save = document.getElementById("guardar");
     save.style.display = (save.style.display == 'none') ? 'block' : 'none';
     var text = document.getElementById("fileName");
     text.style.display = (text.style.display == 'none') ? 'block' : 'none';
-    
+
     //var opciones = document.getElementById("lengOpc");
     //var exportador = new Exportador();
     var lenguaje;
@@ -404,16 +406,16 @@ function runA() {
     console.log(exportador.exportar(arrClases))
     document.getElementById("resultado").innerHTML = "//" + exportador.getName() + "\n" + exportador.exportar(arrClases);
     document.getElementById("archivo").value = "";
-    
+
 }
 
-function guardar(){
-    document.getElementById("ajson").disabled=false;
-    document.getElementById("getElement").disabled=false;
-    document.getElementById("verJson").disabled=false;
-    
+function guardar() {
+    document.getElementById("ajson").disabled = false;
+    document.getElementById("getElement").disabled = false;
+    document.getElementById("verJson").disabled = false;
+
     var textToWrite = "//" + exportador.getName() + "\n" + exportador.exportar(arrClases); //document.getElementById("resultado").value;
-    var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+    var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
     switch (opciones.options[opciones.selectedIndex].text) {
         case "C++":
             var fileNameToSaveAs = document.getElementById("fileName").value + ".cpp";
@@ -430,14 +432,11 @@ function guardar(){
     var downloadLink = document.createElement("a");
     downloadLink.download = fileNameToSaveAs;
     downloadLink.innerHTML = "Download File";
-    if (window.webkitURL != null)
-    {
+    if (window.webkitURL != null) {
         // Chrome allows the link to be clicked
         // without actually adding it to the DOM.
         downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-    }
-    else
-    {
+    } else {
         // Firefox requires the link to be added to the DOM
         // before it can be clicked.
         downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
@@ -448,5 +447,5 @@ function guardar(){
 
     downloadLink.click();
     window.webkitURL.revokeObjectURL();
-    
+
 }
