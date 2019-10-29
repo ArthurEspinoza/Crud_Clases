@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FFF1C1;
+    color: #293462;
+}
+
+#login {
+    background-color: #ffffff;
+    width: 37%;
+    padding: 10px;
+    border-radius: 15px;
+    position: relative;
+    margin: 3% 0 0 30%;
+}
+
+#loginHeader img {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+}
+
+.textoImg {
+    font-weight: bold;
+    font-size: 29px;
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+form {
+    margin-top: 3%;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    margin-left: 5px;
+    border-radius: 15px;
+    width: 98%;
+}
+
+.btnPrimario {
+    background-color: #f76262;
+    color: #293462;
+    border-radius: 15px;
+    border: none;
+    margin: 0 0 0 39%;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-weight: bold;
+}
+
+.btnPrimario:hover {
+    background-color: #216583;
+    color: #f76262;
+}
