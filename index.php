@@ -19,7 +19,7 @@
             <div class="textoImg">Inicio de Sesión</div>
         </div>
         <div>
-            <form action="prueba.php">
+            <form action="controller/acciones.php" method="POST">
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label" for="usuario">Usuario</label>
                     <div class="col-sm-10">
