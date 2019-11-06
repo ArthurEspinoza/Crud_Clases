@@ -4,6 +4,8 @@
     $usuario = $_SESSION['usuario'];
     $modelo = getModelo($usuario);
     $clases = getClases($modelo['idModelo']);
+    $atributos = getAtributos($clases['idClases']);
+    var_dump($atributos);
 ?>
 <!DOCTYPE html>
 <html lang="en">

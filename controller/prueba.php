@@ -37,6 +37,28 @@ class GestorDB{
             echo "Consulta erronea";
         }
     }
+    public function getClases($id){
+        $database = Singleton::getInstance();
+        $queryClases = $database->db->prepare("SELECT * from clases where idModelo=:i");
+        $queryClases->bindParam(':i', $id, PDO::PARAM_INT);
+        if ($queryClases->execute()) {
+            if ($queryClases->rowCount()>0) {
+                $infoClases = $queryClases->fetch(PDO::FETCH_ASSOC);
+                return $infoClases;
+            }
+        }
+    }
+    public function getatributos($id){
+        $database = Singleton::getInstance();
+        $queryAttr = $database->db->prepare("SELECT * from atributos where idClases=:i");
+        $queryAttr->bindParam(':i', $id, PDO::PARAM_STR);
+        if ($queryAttr->execute()) {
+            if ($queryAttr->rowCount()>0) {
+                $infoAttr = $queryAttr->fetch(PDO::FETCH_ASSOC);
+                return $infoAttr;
+            }
+        }
+    }
 }
 
 ?>
