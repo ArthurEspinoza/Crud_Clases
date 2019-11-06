@@ -1,3 +1,6 @@
+<?php 
+    include('controller/acciones.php');
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -32,7 +35,7 @@
                         <input type="password" class="form-control" name="contra" id="contra" placeholder="Introduce tu contraseña">
                     </div>
                 </div>
-                <input type="submit" class="btnPrimario" id="loginBtn" value="Entrar">
+                <input type="submit" class="btnPrimario" name="loginBtn" id="loginBtn" value="Entrar">
             </form>
         </div>
     </section>

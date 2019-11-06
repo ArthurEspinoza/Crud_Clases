@@ -7,9 +7,25 @@ class GestorDB{
         $validarCredenciales->bindParam(':user', $usuario, PDO::PARAM_STR);
         $validarCredenciales->bindParam(':contra', $contra, PDO::PARAM_STR);
         $validarCredenciales->execute();
-        if ($validarCredenciales->rowCount(0)>0) {
+        if ($validarCredenciales->rowCount()>0) {
+            session_start();
+            $_SESSION['usuario'] = $usuario;
             $infoUsuario = $validarCredenciales->fetch(PDO::FETCH_ASSOC);
-            echo $infoUsuario['nombre_usuario'].$infoUsuario['contrasena'];
+            //echo $infoUsuario['nombre_usuario'].$infoUsuario['contrasena'];
+            echo '<script>location.href="../editarModelo.php"</script>';
+        }
+    }
+    public function getModelo($usuario){
+        $database = Singleton::getInstance();
+        $queryModelo = $database->db->prepare("SELECT * from Modelo where idUsuario=:u");
+        $queryModelo->bindParam(':u', $usuario, PDO::PARAM_STR);
+        if($queryModelo->execute()){
+            if ($queryModelo->rowCount()>0) {
+                $infoModelo = $queryModelo->fetch(PDO::FETCH_ASSOC);
+                return $infoModelo;
+            }
+        }else{
+            echo "Consulta erronea";
         }
     }
 }
