@@ -1,6 +1,3 @@
-<?php 
-    include('controller/acciones.php');
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

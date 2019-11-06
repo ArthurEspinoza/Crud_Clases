@@ -9,6 +9,7 @@ if (isset($_POST['loginBtn'])) {
 function getModelo($usuario){
     $gestor = new GestorDB;
     $infoModelo = $gestor->getModelo($usuario);
+    var_dump($infoModelo);
     return $infoModelo;
 }
 ?>

@@ -16,13 +16,22 @@ class GestorDB{
         }
     }
     public function getModelo($usuario){
+        echo $usuario;
         $database = Singleton::getInstance();
-        $queryModelo = $database->db->prepare("SELECT * from Modelo where idUsuario=:u");
-        $queryModelo->bindParam(':u', $usuario, PDO::PARAM_STR);
-        if($queryModelo->execute()){
-            if ($queryModelo->rowCount()>0) {
-                $infoModelo = $queryModelo->fetch(PDO::FETCH_ASSOC);
-                return $infoModelo;
+        $queryId = $database->db->prepare("SELECT idUsuario from usuario where nombre_usuario=:u");
+        $queryId->bindParam(':u', $usuario, PDO::PARAM_STR);
+        if($queryId->execute()){
+            if ($queryId->rowCount()>0) {
+                $infoUsuario = $queryId->fetch(PDO::FETCH_ASSOC);
+                $_SESSION['idUsuario'] = $infoUsuario['idUsuario'];
+                $queryModelo = $database->db->prepare("SELECT * from modelo where idUsuario=:i");
+                $queryModelo->bindParam(':i', $infoUsuario['idUsuario'], PDO::PARAM_INT);
+                if ($queryModelo->execute()) {
+                    if ($queryModelo->rowCount()>0) {
+                        $infoModelo = $queryModelo->fetch(PDO::FETCH_ASSOC);
+                        return $infoModelo;
+                    }
+                }
             }
         }else{
             echo "Consulta erronea";

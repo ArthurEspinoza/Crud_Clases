@@ -1,9 +1,9 @@
 <?php 
     session_start();
-    //include('controller/acciones.php');
+    include('controller/acciones.php');
     $usuario = $_SESSION['usuario'];
-    //$modelo = getModelo($usuario);
-    echo $usuario;
+    $modelo = getModelo($usuario);
+    $clases = getClases($modelo['idModelo']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +14,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Editar Modelo <?php echo $usuario['nombre']?></h1>
+    <h1>Editar Modelo <?php echo $modelo['nombre']?></h1>
 </body>
 </html>
