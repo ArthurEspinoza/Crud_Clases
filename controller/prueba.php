@@ -16,7 +16,7 @@ class GestorDB{
         }
     }
     public function getModelo($usuario){
-        echo $usuario;
+        //echo $usuario;
         $database = Singleton::getInstance();
         $queryId = $database->db->prepare("SELECT idUsuario from usuario where nombre_usuario=:u");
         $queryId->bindParam(':u', $usuario, PDO::PARAM_STR);
@@ -28,7 +28,7 @@ class GestorDB{
                 $queryModelo->bindParam(':i', $infoUsuario['idUsuario'], PDO::PARAM_INT);
                 if ($queryModelo->execute()) {
                     if ($queryModelo->rowCount()>0) {
-                        $infoModelo = $queryModelo->fetch(PDO::FETCH_ASSOC);
+                        $infoModelo = $queryModelo->fetchAll();
                         return $infoModelo;
                     }
                 }
@@ -43,7 +43,7 @@ class GestorDB{
         $queryClases->bindParam(':i', $id, PDO::PARAM_INT);
         if ($queryClases->execute()) {
             if ($queryClases->rowCount()>0) {
-                $infoClases = $queryClases->fetch(PDO::FETCH_ASSOC);
+                $infoClases = $queryClases->fetchAll();
                 return $infoClases;
             }
         }
@@ -54,7 +54,7 @@ class GestorDB{
         $queryAttr->bindParam(':i', $id, PDO::PARAM_STR);
         if ($queryAttr->execute()) {
             if ($queryAttr->rowCount()>0) {
-                $infoAttr = $queryAttr->fetch(PDO::FETCH_ASSOC);
+                $infoAttr = $queryAttr->fetchAll();
                 return $infoAttr;
             }
         }
