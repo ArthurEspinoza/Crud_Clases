@@ -12,7 +12,7 @@ class GestorDB{
             $_SESSION['usuario'] = $usuario;
             $infoUsuario = $validarCredenciales->fetch(PDO::FETCH_ASSOC);
             //echo $infoUsuario['nombre_usuario'].$infoUsuario['contrasena'];
-            echo '<script>location.href="../editarModelo.php"</script>';
+            echo '<script>location.href="../modelo.php"</script>';
         }
     }
     public function getModelo($usuario){
