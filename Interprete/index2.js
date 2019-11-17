@@ -403,6 +403,8 @@ function runA() {
     }
     exportador.setLenguaje(lenguaje);
     console.log(exportador.getName());
+    aJson();
+    getElementos();
     console.log(exportador.exportar(arrClases))
     document.getElementById("resultado").innerHTML = "//" + exportador.getName() + "\n" + exportador.exportar(arrClases);
     document.getElementById("archivo").value = "";
