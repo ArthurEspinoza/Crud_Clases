@@ -11,6 +11,7 @@ class GestorDB{
             session_start();
             $_SESSION['usuario'] = $usuario;
             $infoUsuario = $validarCredenciales->fetch(PDO::FETCH_ASSOC);
+            $_SESSION['idUsuario'] = $infoUsuario['idUsuario'];
             //echo $infoUsuario['nombre_usuario'].$infoUsuario['contrasena'];
             echo '<script>location.href="../modelo.php"</script>';
         }

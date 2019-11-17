@@ -412,8 +412,15 @@ function runA() {
 }
 
 function enviarDatosBD() {
+    var nomModelo = document.getElementById('fileName').value;
+    //console.log(nomModelo);
+    var modelo = {
+        'nombreModelo': nomModelo
+    }
+    arrClases.push(modelo)
+        //console.log(arrClases);
     var xhr = new XMLHttpRequest();
-    var url = '../controller/saveJSON.php';
+    var url = 'controller/saveJSON.php';
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function() {
@@ -423,7 +430,9 @@ function enviarDatosBD() {
             console.log(this.responseText);
         }
     };
-    xhr.send(arrClases);
+    data = JSON.stringify(arrClases);
+    //console.log(data);
+    xhr.send(data);
 }
 
 function guardar() {

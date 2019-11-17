@@ -2,6 +2,8 @@
     session_start();
     include('controller/acciones.php');
     $usuario = $_SESSION['usuario'];
+    $idU = $_SESSION['idUsuario'];
+    echo $idU;
     $modelo = getModelo($usuario);
 ?>
 <!DOCTYPE html>
@@ -54,6 +56,7 @@
                 </div>
             </div>
             <button onclick="location.href='clases.php'">Ir a clases</button>
+            <button onclick="location.href='index.html'"></button>
         </div>
         
     </div>
