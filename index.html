@@ -5,28 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="index.css"/>
+    <link rel="stylesheet" type="text/css" href="index.css" />
     <title>JSReadFiles</title>
 </head>
 
 <body>
     <div id='cargarArchivo'>
-       <input type="file" name="archivo" id="archivo">
-       <br>
-       <input type="button" id='ajson' onclick="aJson()" value="Xml to Json">
-       <br>
-       <input type="button" id='getElement' onclick="getElementos()" value="Ver Elementos">
-       <br>
-       <input type="button" id='verJson' onclick="verJson()" value="Ver JSON Resultante">
-       <br>
+        <input type="file" name="archivo" id="archivo">
+        <br>
+        <input type="button" id='ajson' onclick="aJson()" value="Xml to Json">
+        <br>
+        <input type="button" id='getElement' onclick="getElementos()" value="Ver Elementos">
+        <br>
+        <input type="button" id='verJson' onclick="verJson()" value="Ver JSON Resultante">
+        <br>
         <label for="lengOpc" id='sel'> Seleccione un lenguaje</label>
-       <select name="lengOpc" id="lengOpc">
+        <select name="lengOpc" id="lengOpc">
            <option value="C++">C++</option>
            <option value="JAVA">JAVA</option>
        </select>
-       <br>
+        <br>
         <input id='exportar' type="button" onclick="runA()" value="Exportar">
-   </div>
+    </div>
     </div>
     <div id='visualizar'>
         <div>
@@ -35,10 +35,10 @@
         <div>
             <br>
             <input type="text" id="fileName" placeholder="Ingrese nombre del archivo" style="display: none">
-            <input id='guardar' type="button" onclick="guardar()" value="Guardar" style="display: none">
+            <input id='guardar' type="button" onclick="enviarDatosBD()" value="Guardar" style="display: none">
         </div>
     </div>
-    
+
     <script src="estrategiaLenguajes.js"></script>
     <script src="index2.js"></script>
 </body>

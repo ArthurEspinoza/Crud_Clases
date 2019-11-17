@@ -411,6 +411,21 @@ function runA() {
 
 }
 
+function enviarDatosBD() {
+    var xhr = new XMLHttpRequest();
+    var url = '../controller/saveJSON.php';
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Print received data from server 
+            //document.getElementById('resultDiv').innerHTML = this.responseText;
+            console.log(this.responseText);
+        }
+    };
+    xhr.send(arrClases);
+}
+
 function guardar() {
     document.getElementById("ajson").disabled = false;
     document.getElementById("getElement").disabled = false;
