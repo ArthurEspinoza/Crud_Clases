@@ -22,14 +22,25 @@ if ($queryM->execute()) {
             foreach ($data as $i => $clase) {
                 if ($i != count($data)-1) {
                     //INSERTAMOS LA CLASE
-                    $insertClase = $db->db->prepare('INSERT INTO clases(idClases, nombre, herencia, idModelo, idUsuario)
+                    if (array_key_exists("herencia", $clase)) {
+                        $insertClase = $db->db->prepare('INSERT INTO clases(idClases, nombre, herencia, idModelo, idUsuario)
                                                              VALUES(:iC, :n, :h, :iM, :iU)');
-                    $insertClase->bindParam(':iC', $clase->{'id'}, PDO::PARAM_STR);
-                    $insertClase->bindParam(':n', $clase->{'nombre'}, PDO::PARAM_STR);
-                    $insertClase->bindParam(':h', $clase->{'herencia'}, PDO::PARAM_STR);
-                    $insertClase->bindParam(':iM', $idModelo, PDO::PARAM_INT);
-                    $insertClase->bindParam(':iU', $idU, PDO::PARAM_INT);
-                    $insertClase->execute();
+                        $insertClase->bindParam(':iC', $clase->{'id'}, PDO::PARAM_STR);
+                        $insertClase->bindParam(':n', $clase->{'nombre'}, PDO::PARAM_STR);
+                        $insertClase->bindParam(':h', $clase->{'herencia'}, PDO::PARAM_STR);
+                        $insertClase->bindParam(':iM', $idModelo, PDO::PARAM_INT);
+                        $insertClase->bindParam(':iU', $idU, PDO::PARAM_INT);
+                        $insertClase->execute();
+                    }else{
+                        $insertClase = $db->db->prepare('INSERT INTO clases(idClases, nombre, idModelo, idUsuario)
+                                                             VALUES(:iC, :n, :iM, :iU)');
+                        $insertClase->bindParam(':iC', $clase->{'id'}, PDO::PARAM_STR);
+                        $insertClase->bindParam(':n', $clase->{'nombre'}, PDO::PARAM_STR);
+                        $insertClase->bindParam(':iM', $idModelo, PDO::PARAM_INT);
+                        $insertClase->bindParam(':iU', $idU, PDO::PARAM_INT);
+                        $insertClase->execute();
+                    }
+                    
                     
                     $idClase = $clase->{'id'};
                     if (count($clase->{'atributos'})!= 0) {
