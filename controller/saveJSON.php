@@ -52,8 +52,25 @@ if ($queryM->execute()) {
                         echo "\nMetodos\n";//Recorremos los metodos
                         foreach ($clase->{'metodos'} as $z => $metodo) {
                             echo $metodo->{'nombre'};
+                            $insertMet = $db->db->prepare('INSERT INTO metodos(nombre, idClases, idModelo, idUsuario)
+                                                                        VALUES(:n, :iC, :iM, :iU)');
+                            $insertMet->bindParam(':n', $metodo->{'nombre'}, PDO::PARAM_STR);
+                            $insertMet->bindParam(':iC', $idClase, PDO::PARAM_STR);
+                            $insertMet->bindParam(':iM', $idModelo, PDO::PARAM_INT);
+                            $insertMet->bindParam(':iU', $idU, PDO::PARAM_INT);
+                            $insertMet->execute();
+                            $idMet = $db->db->lastInsertId();
                             foreach ($metodo->{'parametros'} as $k => $parametro) {//Recorremos los parametros de cada metodo
                                 echo "\nParametro:".$parametro->{'nombre'};
+                                $insertP = $db->db->prepare('INSERT INTO parametros(nombre, tipo, idMetodos, idClases, idModelo, idUsuario)
+                                                                         VALUES(:n, :t, :iMet, :iC, :iM, :iU)');
+                                $insertP->bindParam(':n', $parametro->{'nombre'}, PDO::PARAM_STR);
+                                $insertP->bindParam(':t', $parametro->{'tipo'}, PDO::PARAM_STR);
+                                $insertP->bindParam(':iMet', $idMet, PDO::PARAM_INT);
+                                $insertP->bindParam(':iC', $idClase, PDO::PARAM_STR);
+                                $insertP->bindParam(':iM', $idModelo, PDO::PARAM_INT);
+                                $insertP->bindParam(':iU', $idU, PDO::PARAM_INT);
+                                $insertP->execute();
                             }
                         }
                     }else{
