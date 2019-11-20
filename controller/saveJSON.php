@@ -16,13 +16,24 @@ if ($queryM->execute()) {
         foreach ($data as $i => $clase) {
             if ($i != count($data)-1) {
                 //echo $clase->{'nombre'};
-                echo "Atributos\n";
-                foreach ($clase->{'atributos'} as $j => $atributo) {
-                    echo $atributo->{'nombre'};
+                if (count($clase->{'atributos'})!= 0) {
+                    echo "Atributos\n";//Recorremos lo atributos
+                    foreach ($clase->{'atributos'} as $j => $atributo) {
+                        echo $atributo->{'nombre'};
+                    }
+                }else{
+                    echo "La clase ".$clase->{'nombre'}." no tiene atributos\n";
                 }
-                echo "Metodos\n";
-                foreach ($clase->{'metodos'} as $z => $metodo) {
-                    echo $metodo->{'nombre'};
+                if (count($clase->{'metodos'})!=0) {
+                    echo "\nMetodos\n";//Recorremos los metodos
+                    foreach ($clase->{'metodos'} as $z => $metodo) {
+                        echo $metodo->{'nombre'};
+                        foreach ($metodo->{'parametros'} as $k => $parametro) {//Recorremos los parametros de cada metodo
+                            echo "\nParametro:".$parametro->{'nombre'};
+                        }
+                    }
+                }else{
+                    echo "La clase ".$clase->{'nombre'}." no tiene metodos\n";
                 }
             }
         }
