@@ -5,7 +5,7 @@ include('config.php');
 $db = Singleton::getInstance();
 $idU = $_SESSION['idUsuario'];
 $data = json_decode(file_get_contents("php://input"));//Se almacena el json que se recibe del cliente
-//var_dump($data[1]);
+var_dump($data[0]);
 $nomModelo = $data[count($data)-1]->{'nombreModelo'};
 //echo($nomModelo);
 $queryM = $db->db->prepare('SELECT * from modelo where idUsuario=:i and nombre=:n');
@@ -30,11 +30,20 @@ if ($queryM->execute()) {
                     $insertClase->bindParam(':iM', $idModelo, PDO::PARAM_INT);
                     $insertClase->bindParam(':iU', $idU, PDO::PARAM_INT);
                     $insertClase->execute();
-                    //echo $clase->{'nombre'};
+                    
+                    $idClase = $clase->{'id'};
                     if (count($clase->{'atributos'})!= 0) {
                         echo "Atributos\n";//Recorremos lo atributos
                         foreach ($clase->{'atributos'} as $j => $atributo) {
                             echo $atributo->{'nombre'};
+                            $insertAttr = $db->db->prepare('INSERT INTO atributos(nombre, tipo, idClases, idModelo, idUsuario)
+                                                                        VALUES(:n, :t,:iC, :iM, :iU)');
+                            $insertAttr->bindParam(':n',$atributo->{'nombre'},PDO::PARAM_STR);
+                            $insertAttr->bindParam(':t',$atributo->{'tipo'},PDO::PARAM_STR);
+                            $insertAttr->bindParam(':iC',$idClase, PDO::PARAM_STR);
+                            $insertAttr->bindParam(':iM', $idModelo, PDO::PARAM_INT);
+                            $insertAttr->bindParam(':iU', $idU, PDO::PARAM_INT);
+                            $insertAttr->execute();
                         }
                     }else{
                         echo "La clase ".$clase->{'nombre'}." no tiene atributos\n";
