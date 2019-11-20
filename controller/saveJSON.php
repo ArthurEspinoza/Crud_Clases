@@ -5,7 +5,7 @@ include('config.php');
 $db = Singleton::getInstance();
 $idU = $_SESSION['idUsuario'];
 $data = json_decode(file_get_contents("php://input"));//Se almacena el json que se recibe del cliente
-//var_dump($data[0]);
+//var_dump($data[1]);
 $nomModelo = $data[count($data)-1]->{'nombreModelo'};
 //echo($nomModelo);
 $queryM = $db->db->prepare('SELECT * from modelo where idUsuario=:i and nombre=:n');
@@ -13,30 +13,49 @@ $queryM->bindParam(':i', $idU, PDO::PARAM_INT);
 $queryM->bindParam(':n', $nomModelo, PDO::PARAM_STR);
 if ($queryM->execute()) {
     if ($queryM->rowCount()==0) {
-        foreach ($data as $i => $clase) {
-            if ($i != count($data)-1) {
-                //echo $clase->{'nombre'};
-                if (count($clase->{'atributos'})!= 0) {
-                    echo "Atributos\n";//Recorremos lo atributos
-                    foreach ($clase->{'atributos'} as $j => $atributo) {
-                        echo $atributo->{'nombre'};
-                    }
-                }else{
-                    echo "La clase ".$clase->{'nombre'}." no tiene atributos\n";
-                }
-                if (count($clase->{'metodos'})!=0) {
-                    echo "\nMetodos\n";//Recorremos los metodos
-                    foreach ($clase->{'metodos'} as $z => $metodo) {
-                        echo $metodo->{'nombre'};
-                        foreach ($metodo->{'parametros'} as $k => $parametro) {//Recorremos los parametros de cada metodo
-                            echo "\nParametro:".$parametro->{'nombre'};
+        $insertModel = $db->db->prepare('INSERT INTO modelo(nombre, idUsuario) VALUES(:n, :i)');
+        $insertModel->bindParam(':n', $nomModelo,PDO::PARAM_STR);
+        $insertModel->bindParam(':i', $idU, PDO::PARAM_INT);
+        if ($insertModel->execute()) {
+            $idModelo = $db->db->lastInsertId();
+            echo "Id del MODELO".$idModelo;
+            foreach ($data as $i => $clase) {
+                if ($i != count($data)-1) {
+                    //INSERTAMOS LA CLASE
+                    $insertClase = $db->db->prepare('INSERT INTO clases(idClases, nombre, herencia, idModelo, idUsuario)
+                                                             VALUES(:iC, :n, :h, :iM, :iU)');
+                    $insertClase->bindParam(':iC', $clase->{'id'}, PDO::PARAM_STR);
+                    $insertClase->bindParam(':n', $clase->{'nombre'}, PDO::PARAM_STR);
+                    $insertClase->bindParam(':h', $clase->{'herencia'}, PDO::PARAM_STR);
+                    $insertClase->bindParam(':iM', $idModelo, PDO::PARAM_INT);
+                    $insertClase->bindParam(':iU', $idU, PDO::PARAM_INT);
+                    $insertClase->execute();
+                    //echo $clase->{'nombre'};
+                    if (count($clase->{'atributos'})!= 0) {
+                        echo "Atributos\n";//Recorremos lo atributos
+                        foreach ($clase->{'atributos'} as $j => $atributo) {
+                            echo $atributo->{'nombre'};
                         }
+                    }else{
+                        echo "La clase ".$clase->{'nombre'}." no tiene atributos\n";
                     }
-                }else{
-                    echo "La clase ".$clase->{'nombre'}." no tiene metodos\n";
+                    if (count($clase->{'metodos'})!=0) {
+                        echo "\nMetodos\n";//Recorremos los metodos
+                        foreach ($clase->{'metodos'} as $z => $metodo) {
+                            echo $metodo->{'nombre'};
+                            foreach ($metodo->{'parametros'} as $k => $parametro) {//Recorremos los parametros de cada metodo
+                                echo "\nParametro:".$parametro->{'nombre'};
+                            }
+                        }
+                    }else{
+                        echo "La clase ".$clase->{'nombre'}." no tiene metodos\n";
+                    }
                 }
             }
+        }else{
+            echo "Algo salió mal al insertar modelo";
         }
+        
     }else{
         echo "Ya existe un modelo guardado con ese nombre";
     }
