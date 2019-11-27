@@ -1,74 +1,70 @@
 body {
-    background-color: #9CD5B7;
+    background-color: #f76262;
 }
 
-#cargarArchivo{
-    float:left;
+#cargarArchivo {
+    float: left;
     border-radius: 25px;
-    border: 5px solid #559963;
+    border: 5px solid #293462;
     padding: 20px;
     width: 30%;
     height: 100%;
+    background-color: #ffffff;
 }
 
-#visualizar{
-    float:left;
+#visualizar {
+    float: left;
     border-radius: 25px;
-    border: 5px solid #559963;
+    border: 5px solid #293462;
     margin-left: 20px;
     padding: 20px;
     width: 60%;
     height: 100%;
-
+    color: black;
+    background-color: #ffffff;
 }
-#archivo{
+
+#archivo {
     border: 2px solid #55AF68;
     border-radius: 8px;
     padding: 5px;
     margin: 40px 20px;
     font-size: 1em;
-
 }
 
-#ajson{
+#ajson {
     border-radius: 8px;
     background-color: #55AF68;
     text-align: center;
     font-size: 17px;
     margin: 2.5px 20px;
     display: block;
-
-    
 }
 
-#getElement{
+#getElement {
     border-radius: 8px;
     background-color: #55AF68;
     text-align: center;
     font-size: 17px;
     margin: 2.5px 20px;
     display: block;
-
-    
 }
 
-#verJson{
+#verJson {
     border-radius: 8px;
     background-color: #55AF68;
     text-align: center;
     font-size: 17px;
     margin: 2.5px 20px;
     display: block;
-    
 }
 
-#sel{
+#sel {
     margin: 20px;
     font-size: 1.2em;
-
 }
 
-#lengOpc{
+#lengOpc {
     width: 60%;
     padding: 5px 20px;
     margin: 0px 20px;
@@ -76,46 +72,47 @@ body {
     border-radius: 4px;
     background-color: #55AF68;
     font-size: 0.9em;
-
 }
 
-#exportar{
+#exportar {
     border-radius: 12px;
     background-color: #14987f;
     text-align: center;
     font-size: 20px;
-    -webkit-transition-duration: 0.4s; /* Safari */
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
     transition-duration: 0.4s;
     margin: 50px 20px;
     display: block;
-
 }
 
-#fileName{
+#fileName {
     border-radius: 12px;
     text-align: center;
     font-size: 20px;
     float: left;
 }
-#guardar{
+
+#guardar {
     border-radius: 12px;
     background-color: #14987f;
     text-align: center;
     font-size: 20px;
     margin-left: 5px;
     float: left;
-    -webkit-transition-duration: 0.4s; /* Safari */
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
     transition-duration: 0.4s;
 }
 
-
-
-#exportar:hover{
-    background-color:#367148; /* Green */
+#exportar:hover {
+    background-color: #367148;
+    /* Green */
     color: white;
 }
 
-#guardar:hover{
-    background-color: #367148; /* Green */
+#guardar:hover {
+    background-color: #367148;
+    /* Green */
     color: white;
 }

@@ -57,7 +57,7 @@ function xmlToJson(xml) {
 var xmlA;
 
 function aJson() {
-    document.getElementById("ajson").disabled = true;
+    //document.getElementById("ajson").disabled = true;
     xmlA = parser.parseFromString(xarchivo, 'text/xml');
     var obj = xmlToJson(xmlA);
     console.log(obj);
@@ -369,7 +369,7 @@ function getElementos() {
             metodos = [];
         }
     }
-    document.getElementById("getElement").disabled = true;
+    //document.getElementById("getElement").disabled = true;
 }
 
 function verJson() {
@@ -427,7 +427,8 @@ function enviarDatosBD() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server 
             //document.getElementById('resultDiv').innerHTML = this.responseText;
-            console.log(this.responseText);
+            //console.log(this.responseText);
+            location.href = "modelo.php";
         }
     };
     data = JSON.stringify(arrClases);
@@ -436,9 +437,9 @@ function enviarDatosBD() {
 }
 
 function guardar() {
-    document.getElementById("ajson").disabled = false;
+    /*document.getElementById("ajson").disabled = false;
     document.getElementById("getElement").disabled = false;
-    document.getElementById("verJson").disabled = false;
+    document.getElementById("verJson").disabled = false;*/
 
     var textToWrite = "//" + exportador.getName() + "\n" + exportador.exportar(arrClases); //document.getElementById("resultado").value;
     var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
