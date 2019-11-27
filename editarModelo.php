@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>        
-            <button onclick="location.href='clases.php'">Ir a clases</button>
+            <!-- <button onclick="location.href='clases.php'">Ir a clases</button> -->
         </div>
     </div>
     <div id="res"></div>
