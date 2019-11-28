@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2019 a las 22:39:33
+-- Tiempo de generación: 28-11-2019 a las 05:24:36
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -49,7 +49,15 @@ INSERT INTO `atributos` (`idAtributos`, `nombre`, `tipo`, `idClases`, `idModelo`
 (14, 'numCilindros', 'Integer', '_9lEF8OOYEemTk6CKSpsZQA', 16, 1),
 (15, 'marca', 'String', '_qCd-UOO_EemTk6CKSpsZQA', 16, 1),
 (16, 'precio', 'Real', '_qCd-UOO_EemTk6CKSpsZQA', 16, 1),
-(17, 'estatura', 'Real', '_ubQ5gO8CEemSLPSU26dDbA', 19, 1);
+(17, 'estatura', 'Real', '_ubQ5gO8CEemSLPSU26dDbA', 19, 1),
+(18, 'marca', 'String', '_AqqAEMs-EemR9Zq8Q2DrwQ', 20, 2),
+(19, 'color', 'String', '_AqqAEMs-EemR9Zq8Q2DrwQ', 20, 2),
+(20, 'motor', '_9lEF8OOYEemTk6CKSpsZQA', '_AqqAEMs-EemR9Zq8Q2DrwQ', 20, 2),
+(21, 'radiomp3', '_qCd-UOO_EemTk6CKSpsZQA', '_AqqAEMs-EemR9Zq8Q2DrwQ', 20, 2),
+(22, 'numCilindros', 'Integer', '_9lEF8OOYEemTk6CKSpsZQA', 20, 2),
+(23, 'marca', 'String', '_qCd-UOO_EemTk6CKSpsZQA', 20, 2),
+(24, 'precio', 'Real', '_qCd-UOO_EemTk6CKSpsZQA', 20, 2),
+(26, 'estatura', 'Real', '_ubQ5gO8CEemSLPSU26dDbA', 22, 2);
 
 -- --------------------------------------------------------
 
@@ -71,10 +79,15 @@ CREATE TABLE `clases` (
 
 INSERT INTO `clases` (`idClases`, `nombre`, `herencia`, `idModelo`, `idUsuario`) VALUES
 ('_9lEF8OOYEemTk6CKSpsZQA', 'Motor', '', 16, 1),
+('_9lEF8OOYEemTk6CKSpsZQA', 'Motor', '', 20, 2),
 ('_AqqAEMs-EemR9Zq8Q2DrwQ', 'Auto', '_w_V7wOO9EemTk6CKSpsZQA', 16, 1),
+('_AqqAEMs-EemR9Zq8Q2DrwQ', 'Auto', '_w_V7wOO9EemTk6CKSpsZQA', 20, 2),
 ('_qCd-UOO_EemTk6CKSpsZQA', 'RadioMP3', '', 16, 1),
+('_qCd-UOO_EemTk6CKSpsZQA', 'RadioMP3', '', 20, 2),
 ('_ubQ5gO8CEemSLPSU26dDbA', 'Cuerpo', '', 19, 1),
-('_w_V7wOO9EemTk6CKSpsZQA', 'VehiculoTerrestre', '', 16, 1);
+('_ubQ5gO8CEemSLPSU26dDbA', 'Cuerpo', '', 22, 2),
+('_w_V7wOO9EemTk6CKSpsZQA', 'VehiculoTerrestre', '', 16, 1),
+('_w_V7wOO9EemTk6CKSpsZQA', 'VehiculoTerrestre', '', 20, 2);
 
 -- --------------------------------------------------------
 
@@ -102,7 +115,14 @@ INSERT INTO `metodos` (`idMetodos`, `nombre`, `tipo`, `idClases`, `idModelo`, `i
 (15, 'trasladar', NULL, '_w_V7wOO9EemTk6CKSpsZQA', 16, 1),
 (16, 'tocarMusica', NULL, '_qCd-UOO_EemTk6CKSpsZQA', 16, 1),
 (17, 'setEstatura', NULL, '_ubQ5gO8CEemSLPSU26dDbA', 19, 1),
-(18, 'getEstatura', NULL, '_ubQ5gO8CEemSLPSU26dDbA', 19, 1);
+(18, 'getEstatura', NULL, '_ubQ5gO8CEemSLPSU26dDbA', 19, 1),
+(19, 'encender', NULL, '_AqqAEMs-EemR9Zq8Q2DrwQ', 20, 2),
+(20, 'setNumCilindros', NULL, '_9lEF8OOYEemTk6CKSpsZQA', 20, 2),
+(21, 'getNumCilindros', NULL, '_9lEF8OOYEemTk6CKSpsZQA', 20, 2),
+(22, 'trasladar', NULL, '_w_V7wOO9EemTk6CKSpsZQA', 20, 2),
+(23, 'tocarMusica', NULL, '_qCd-UOO_EemTk6CKSpsZQA', 20, 2),
+(26, 'setEstatura', NULL, '_ubQ5gO8CEemSLPSU26dDbA', 22, 2),
+(27, 'getEstatura', NULL, '_ubQ5gO8CEemSLPSU26dDbA', 22, 2);
 
 -- --------------------------------------------------------
 
@@ -122,7 +142,9 @@ CREATE TABLE `modelo` (
 
 INSERT INTO `modelo` (`idModelo`, `nombre`, `idUsuario`) VALUES
 (16, 'CarroCompleto', 1),
-(19, 'Cuerpo', 1);
+(19, 'Cuerpo', 1),
+(20, 'ModeloCarro', 2),
+(22, 'ModeloCuerpo', 2);
 
 -- --------------------------------------------------------
 
@@ -148,7 +170,11 @@ INSERT INTO `parametros` (`idParametros`, `nombre`, `tipo`, `idMetodos`, `idClas
 (4, 'msg', 'String', 12, '_AqqAEMs-EemR9Zq8Q2DrwQ', 16, 1),
 (5, 'numC', 'Integer', 13, '_9lEF8OOYEemTk6CKSpsZQA', 16, 1),
 (6, 'size', 'Real', 17, '_ubQ5gO8CEemSLPSU26dDbA', 19, 1),
-(7, 'est', 'Real', 17, '_ubQ5gO8CEemSLPSU26dDbA', 19, 1);
+(7, 'est', 'Real', 17, '_ubQ5gO8CEemSLPSU26dDbA', 19, 1),
+(8, 'msg', 'String', 19, '_AqqAEMs-EemR9Zq8Q2DrwQ', 20, 2),
+(9, 'numC', 'Integer', 20, '_9lEF8OOYEemTk6CKSpsZQA', 20, 2),
+(12, 'size', 'Real', 26, '_ubQ5gO8CEemSLPSU26dDbA', 22, 2),
+(13, 'est', 'Real', 26, '_ubQ5gO8CEemSLPSU26dDbA', 22, 2);
 
 -- --------------------------------------------------------
 
@@ -167,7 +193,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idUsuario`, `nombre_usuario`, `contrasena`) VALUES
-(1, 'arturo', 'arturo');
+(1, 'arturo', 'arturo'),
+(2, 'profesor', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -222,31 +249,31 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `atributos`
 --
 ALTER TABLE `atributos`
-  MODIFY `idAtributos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idAtributos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `metodos`
 --
 ALTER TABLE `metodos`
-  MODIFY `idMetodos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idMetodos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `modelo`
 --
 ALTER TABLE `modelo`
-  MODIFY `idModelo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idModelo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `parametros`
 --
 ALTER TABLE `parametros`
-  MODIFY `idParametros` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idParametros` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
